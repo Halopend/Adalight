@@ -31,7 +31,7 @@
   ///// User definitions /////
 
   // Define the number of LEDs
-  #define NUM_LEDS 50
+  #define NUM_LEDS 48
   // Define Data Pin
   #define DATA_PIN 12
   #define CLOCK_PIN 11
@@ -55,6 +55,9 @@
 
 void setup()
 {
+    
+    // #Define RGB_FLASH_TEST_OFF     // RGB flashes at boot to showcase all is working well by default. Uncomment to to TURN OFF this test
+    
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Uncomment/edit one of the following lines to match your leds arrangement. Note the RGB portion 
     // should denote the order the chip embeded with your LEDs expects to recieve its colour data. If your 
@@ -63,7 +66,7 @@ void setup()
     // of the LEDS. If it flashes RED GREEN BLUE for example it means no changes has to be made while GREEN
     // RED BLUE means you need to change it to GRB. Note that after you make the change to the correct order
     // it will flash RED GREEN BLUE at boot.
-      
+           
     // FastLED.addLeds<TM1803, DATA_PIN, RGB>(leds, NUM_LEDS);
     // FastLED.addLeds<TM1804, DATA_PIN, RGB>(leds, NUM_LEDS);
     // FastLED.addLeds<TM1809, DATA_PIN, RGB>(leds, NUM_LEDS);
@@ -83,17 +86,20 @@ void setup()
     // FastLED.addLeds<SM16716, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
     // FastLED.addLeds<LPD8806, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+   
+       
+    #ifndef RGB_FLASH_TEST_OFF       
+      delay(800);
+      LEDS.showColor(CRGB(255, 0, 0)); //Flash Red
+      delay(800);
+      LEDS.showColor(CRGB(0, 255, 0)); //Flash Green
+      delay(800);
+      LEDS.showColor(CRGB(0, 0, 255)); //Flash Blue
+      delay(800);
+      LEDS.showColor(CRGB(0, 0, 0));
+    #endif
     
-    // initial RGB flash just to showcase all is working well
-    delay(800);
-    LEDS.showColor(CRGB(255, 0, 0));
-    delay(800);
-    LEDS.showColor(CRGB(0, 255, 0));
-    delay(800);
-    LEDS.showColor(CRGB(0, 0, 255));
-    delay(800);
-    LEDS.showColor(CRGB(0, 0, 0));
-  
+    
     Serial.begin(serialRate);
     Serial.print("Ada\n"); // Send "Magic Word" string to host
   
@@ -157,11 +163,11 @@ byte serialread(){
         LEDS.showColor(CRGB(0, 0, 0));
         Serial.print("Ada\n"); // Send "Magic Word" string to host
         t=0;
-      }
+      };
     t++;  
     }//endwhile  
   #else                      // loop code without timeout
-     while (!Serial.available())
+     while (!Serial.available());
   #endif
  return Serial.read();   
 }
