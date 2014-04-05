@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////
 // Arduino interface for the use of operated LEDs                                    //
-// Uses Adalight protocol and is compatible with Boblight, Prismatik etc             //
+// Uses Adalight protocol and is compatible with Boblight, Prismatik etc             // 
 // "Magic Word" for synchronisation is 'Ada' followed by LED High, Low and Checksum  //
 ///////////////////////////////////////////////////////////////////////////////////////
 

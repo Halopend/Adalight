@@ -1,3 +1,7 @@
+This version of Adalight is rewritten to use the FastLED library which
+includes support for a wide range of devices and LED types.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Adalight is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as
 published by the Free Software Foundation, either version 3 of
