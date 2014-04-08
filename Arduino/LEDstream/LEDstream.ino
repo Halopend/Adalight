@@ -56,7 +56,7 @@
 void setup()
 {
     
-    // #Define RGB_FLASH_TEST_OFF     // RGB flashes at boot to showcase all is working well by default. Uncomment to to TURN OFF this test
+    //#define RGB_FLASH_TEST_OFF     // RGB flashes at boot to showcase all is working well by default. Uncomment to to TURN OFF this test
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Uncomment/edit one of the following lines to match your leds arrangement. Note the RGB portion 
@@ -73,7 +73,7 @@ void setup()
       
     // FastLED.addLeds<WS2811, DATA_PIN, RGB>(leds, NUM_LEDS);
     // FastLED.addLeds<WS2812, DATA_PIN, RGB>(leds, NUM_LEDS);
-    // FastLED.addLeds<WS2812B, DATA_PIN, GRB>(leds, NUM_LEDS);
+    // FastLED.addLeds<WS2812B, DATA_PIN, RGB>(leds, NUM_LEDS);
     // FastLED.addLeds<NEOPIXEL, DATA_PIN, RGB>(leds, NUM_LEDS);
       
     // FastLED.addLeds<UCS1903, DATA_PIN, RGB>(leds, NUM_LEDS);
@@ -96,9 +96,9 @@ void setup()
       delay(800);
       LEDS.showColor(CRGB(0, 0, 255)); //Flash Blue
       delay(800);
-      LEDS.showColor(CRGB(0, 0, 0));
     #endif
-    
+      
+    LEDS.showColor(CRGB(0, 0, 0));
     
     Serial.begin(serialRate);
     Serial.print("Ada\n"); // Send "Magic Word" string to host
